@@ -5,7 +5,7 @@ import com.araksis.sjd.core.services.TransactionService
 import kotlinx.coroutines.*
 import kotlin.reflect.KClass
 
-class JsonEntityManager<T : Any>(private val clazz: KClass<T>, private val sjdConfig: SJDConfig) : BaseEntityManager<T>(clazz, sjdConfig) {
+class JsonEntityCollection<T : Any>(private val clazz: KClass<T>, private val sjdConfig: SJDConfig) : BaseEntityCollection<T>(clazz, sjdConfig) {
     private val backupService = BackupService(sjdConfig)
     private val transactionService: TransactionService<T> = TransactionService(this)
 

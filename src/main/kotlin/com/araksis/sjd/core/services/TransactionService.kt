@@ -1,9 +1,9 @@
 package com.araksis.sjd.core.services
 
-import com.araksis.sjd.core.BaseEntityManager
+import com.araksis.sjd.core.BaseEntityCollection
 import java.util.*
 
-class TransactionService<T : Any>(private val jsonEntityManager: BaseEntityManager<T>) {
+class TransactionService<T : Any>(private val jsonEntityManager: BaseEntityCollection<T>) {
     private val operations = LinkedList<() -> Unit>()
     private var isTransactionActive = false
 

@@ -64,12 +64,12 @@ data class User(
 )
 ```
 
-### 3. Manager Initialization
+### 3. Collection Initialization
 
-Create an instance of `JsonEntityManager` to work with the data:
+Create an instance of `JsonEntityCollection` to work with the data:
 
 ```kotlin
-val entityManager = JsonEntityManager(User::class, config)
+val userCollection = JsonEntityCollection(User::class, config)
 ```
 
 ### 4. CRUD Operations
@@ -77,27 +77,27 @@ val entityManager = JsonEntityManager(User::class, config)
 #### Inserting a Record
 ```kotlin
 val user = User(name = "John Doe", age = 30)
-entityManager.insert(user)
+userCollection.insert(user)
 ```
 
 #### Searching for Records
 ```kotlin
 // Find all records
-val allUsers = entityManager.findAll()
+val allUsers = userCollection.findAll()
 
 // Find records by condition
-val usersOver30 = entityManager.findBy { it.age > 30 }
+val usersOver30 = userCollection.findBy { it.age > 30 }
 ```
 
 #### Updating a Record
 ```kotlin
 val updatedUser = user.copy(age = 31)
-entityManager.update(updatedUser)
+userCollection.update(updatedUser)
 ```
 
 #### Deleting a Record
 ```kotlin
-entityManager.delete(user)
+userCollection.delete(user)
 ```
 
 ### 5. Transactions
@@ -105,9 +105,9 @@ entityManager.delete(user)
 Perform multiple operations within a single transaction:
 
 ```kotlin
-entityManager.runInTransaction {
-    entityManager.insert(User(name = "Alice", age = 25))
-    entityManager.insert(User(name = "Bob", age = 28))
+userCollection.runInTransaction {
+   userCollection.insert(User(name = "Alice", age = 25))
+   userCollection.insert(User(name = "Bob", age = 28))
 }
 ```
 
@@ -115,29 +115,15 @@ entityManager.runInTransaction {
 
 #### Creating a Backup
 ```kotlin
-val isSuccess = entityManager.createBackup()
+val isSuccess = userCollection.createBackup()
 if (isSuccess) println("Backup created successfully!")
 ```
 
 #### Restoring from a Backup
 ```kotlin
-val timestamp = entityManager.listBackups().last()
-val isRestored = entityManager.restoreBackup(timestamp)
+val timestamp = userCollection.listBackups().last()
+val isRestored = userCollection.restoreBackup(timestamp)
 if (isRestored) println("Data restored successfully!")
-```
-
----
-
-## Dependencies
-
-Add the dependencies to your `build.gradle.kts`:
-
-```kotlin
-dependencies {
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.0")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
-}
 ```
 
 ---

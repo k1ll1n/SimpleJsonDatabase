@@ -6,7 +6,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.withLock
 import kotlin.reflect.KClass
 
-open class BaseEntityManager<T : Any>(private val clazz: KClass<T>, private val sjdConfig: SJDConfig) : JsonRepository<T>(clazz, sjdConfig) {
+abstract class BaseEntityCollection<T : Any>(private val clazz: KClass<T>, private val sjdConfig: SJDConfig) : JsonRepository<T>(clazz, sjdConfig) {
     private var cachedRecords: List<T> = mutableListOf()
     private var hash: Int = 0
     private var lastSaveTime = System.currentTimeMillis()

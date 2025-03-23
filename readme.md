@@ -1,5 +1,20 @@
 # Simple JSON Database (SJD)
 
+## Install
+
+[![Maven Central](https://img.shields.io/maven-central/v/com.araksis.sjd/sjd.svg)](https://search.maven.org/artifact/com.araksis.sjd/sjd)
+### Gradle Kts
+`implementation("com.araksis.sjd:sjd:*.*.*")`
+
+### Maven
+```
+<dependency>
+    <groupId>com.araksis.sjd</groupId>
+    <artifactId>sjd</artifactId>
+    <version>*.*.*</version>
+</dependency>
+```
+
 ## Description
 
 Simple JSON Database (SJD) is a lightweight library for working with JSON files as a database. It provides functionality for creating, reading, updating, and deleting records (CRUD), as well as supporting transactions, change logging, backups, and automatic saving of data.
@@ -11,29 +26,29 @@ The library is designed for use in Kotlin/Java projects where a simple data stor
 ## Key Features
 
 1. **CRUD Operations**:
-    - Insert, update, delete, and search for records.
-    - Support for filtering data using lambda expressions.
+   - Insert, update, delete, and search for records.
+   - Support for filtering data using lambda expressions.
 
 2. **Transactions**:
-    - Ability to perform multiple operations within a single transaction.
-    - Automatic rollback upon errors.
+   - Ability to perform multiple operations within a single transaction.
+   - Automatic rollback upon errors.
 
 3. **Backups**:
-    - Creating backups with the ability to restore data.
-    - Automatic creation of backups at specified intervals.
+   - Creating backups with the ability to restore data.
+   - Automatic creation of backups at specified intervals.
 
 4. **Change Logging**:
-    - Logging all operations (INSERT, UPDATE, DELETE) with timestamps and unique record identifiers.
+   - Logging all operations (INSERT, UPDATE, DELETE) with timestamps and unique record identifiers.
 
 5. **Automatic Saving**:
-    - Caching data in memory with periodic synchronization to the file system.
+   - Caching data in memory with periodic synchronization to the file system.
 
 6. **Annotation Support**:
-    - `@SJDDocument` annotation for defining collection names.
-    - `@UniqueKey` annotation for specifying unique entity keys.
+   - `@SJDDocument` annotation for defining collection names.
+   - `@UniqueKey` annotation for specifying unique entity keys.
 
 7. **Custom Serialization/Deserialization**:
-    - Support for data types such as `LocalDateTime` and `Duration` using Jackson.
+   - Support for data types such as `LocalDateTime` and `Duration` using Jackson.
 
 ---
 
@@ -58,10 +73,9 @@ Define an entity class with annotations:
 ```kotlin
 @SJDDocument(collectionName = "users")
 data class User(
-    @UniqueKey val id: UUID = UUID.randomUUID(),
-    val name: String,
-    val age: Int
-)
+   val name: String,
+   val age: Int
+) : SJDCollection()
 ```
 
 ### 3. Collection Initialization

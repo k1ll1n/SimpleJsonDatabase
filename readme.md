@@ -2,14 +2,14 @@
 
 ## Install
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.araksis.sjd/sjd.svg)](https://search.maven.org/artifact/com.araksis.sjd/sjd)
+[![Maven Central](https://img.shields.io/maven-central/v/com.araksis/sjd.svg)](https://search.maven.org/artifact/com.araksis/sjd)
 ### Gradle Kts
-`implementation("com.araksis.sjd:sjd:*.*.*")`
+`implementation("com.araksis:sjd:*.*.*")`
 
 ### Maven
 ```
 <dependency>
-    <groupId>com.araksis.sjd</groupId>
+    <groupId>com.araksis</groupId>
     <artifactId>sjd</artifactId>
     <version>*.*.*</version>
 </dependency>
